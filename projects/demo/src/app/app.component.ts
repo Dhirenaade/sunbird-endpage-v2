@@ -24,10 +24,11 @@ export class AppComponent implements OnInit {
 
     this.contentDetails = {
       message: 'You Just Completed',
+      userName: 'Mentor Educator',
       timeLabel: 'TIME',
       'content-info' : 'B301,B302_STD_1_TAMIL,ENGLISH_LANG_TERM 1_OPT',
       clockIcon: '/assets/clock.png',
-      author: 'Universal Learning Aid (Let"s tute)',
+      author: 'Universsal Learning Aid (Let"s tute)',
       replayIcon: 'assets/replay.png',
       exitIcon: 'assets/exit.png',
     };

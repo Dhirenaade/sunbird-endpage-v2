@@ -17,6 +17,7 @@ export class EndPageComponent implements OnInit {
 
    TotalTimeConsumed: number;
    telemetryEventObject: EndPageEvent;
+   userName: any;
 
   constructor() { }
 

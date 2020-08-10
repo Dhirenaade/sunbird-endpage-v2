@@ -17,8 +17,8 @@
           <label class="fontMatrix">Replay</label>
       </div>
       <div *ngIf="endPageConfig['showUser']" class="endpage-img">
-          <img class="img-size" [src]="">
-          <label class="fontMatrix">Anonynous</label>
+          <a class="dynamic-name">{{contentDetails.userName.charAt(0).toUpperCase()}}</a>
+          <label class="fontMatrix">{{contentDetails.userName}}</label>
       </div>
       <div *ngIf="endPageConfig['showExit']" class="endpage-img">
           <img class="img-size" [src]="contentDetails['exitIcon']" (click)="exit()">
