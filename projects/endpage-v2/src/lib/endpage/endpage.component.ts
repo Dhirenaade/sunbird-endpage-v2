@@ -53,10 +53,9 @@ export class EndPageComponent implements OnInit {
 
   replay(action): void {
     this.replayEvent.emit(action);
-
   }
 
   exit(action): void {
-    this.replayEvent.emit(action);
+    this.exitEvent.emit(action);
   }
 }
