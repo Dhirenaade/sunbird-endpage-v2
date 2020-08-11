@@ -1,4 +1,4 @@
-h3{
+/* h3{
     font-size:2.8vw;
 }
 
@@ -68,4 +68,11 @@ h6{
     vertical-align: middle;
     margin: 2vw 1vw 2vw 2vw;
     line-height: 5vw;
-}
+} */
+
+.jumbotron {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }

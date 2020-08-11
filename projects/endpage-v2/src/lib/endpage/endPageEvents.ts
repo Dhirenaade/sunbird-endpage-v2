@@ -27,12 +27,20 @@ export interface EndPageConfig {
 
 export interface ContentDetails {
     message: string;
-    'content-info': string;
     clockIcon: string;
     author: string;
     replayIcon: string;
     exitIcon: string;
+    timeLabel: string;
+    contentInfo: string;
+    authorLabel: string;
+    replayLabel: string;
+    exitLabel: string;
+    user: string;
 }
+
+
+
 
 
 export interface PdfEndData {

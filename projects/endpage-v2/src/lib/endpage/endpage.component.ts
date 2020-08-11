@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter, OnDestroy } from '@angular/core';
 
-import { EndPageEvent } from './endPageEvents';
+import { EndPageEvent, ContentDetails, EndPageConfig } from './endPageEvents';
 
 @Component({
   selector: 'sb-lib-endpage',
@@ -9,11 +9,13 @@ import { EndPageEvent } from './endPageEvents';
 })
 export class EndPageComponent implements OnInit {
    // Import and export for end-page Library
-   @Input() endPageConfig: object;
-   @Input() contentDetails: object;
+   @Input() endPageConfig: EndPageConfig;
+   @Input() contentDetails: ContentDetails;
    @Input() pdfEndData: object | any;
    // Output from EndPage
    @Output() sendMetadata: EventEmitter<object> = new EventEmitter<EndPageEvent>();
+   @Output() replayEvent: EventEmitter<string> = new EventEmitter<string>();
+   @Output() exitEvent: EventEmitter<string> = new EventEmitter<string>();
 
    TotalTimeConsumed = 0;
    TotalTimeConsumedInHours = '';
@@ -32,6 +34,7 @@ export class EndPageComponent implements OnInit {
   }
 
   getTimeSpent() {
+    console.log(this.pdfEndData);
     for ( const eachPageTime of this.pdfEndData['metaData']['pageDuration']) {
       this.TotalTimeConsumed += (eachPageTime.spentTime);
     }
@@ -45,12 +48,13 @@ export class EndPageComponent implements OnInit {
     return hours + ':' + minutes + ':' + seconds;
   }
 
-  replay(): void {
+  replay(action): void {
+    this.replayEvent.emit(action);
 
   }
 
   exit(): void {
-
+    this.replayEvent.emit('exit');
   }
 
 }
