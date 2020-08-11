@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EndpageComponent } from './endpage.component';
+import { EndPageComponent } from './endpage.component';
 
 describe('EndpageComponent', () => {
-  let component: EndpageComponent;
-  let fixture: ComponentFixture<EndpageComponent>;
+  let component: EndPageComponent;
+  let fixture: ComponentFixture<EndPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EndpageComponent ]
+      declarations: [ EndPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EndpageComponent);
+    fixture = TestBed.createComponent(EndPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
