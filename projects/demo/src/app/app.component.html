@@ -1,1 +1,1 @@
-<sb-lib-endpage [endPageConfig]="endPageConfig" [contentDetails]="contentDetails" [pdfEndData]="pdfEndData" (sendMetadata)="EndPageEventHandler($event)"></sb-lib-endpage>
+<sb-lib-endpage [endPageConfig]="endPageConfig" [contentDetails]="contentDetails" [EndPageData]="EndPageData" (sendMetadata)="EndPageEventHandler($event)" (replayEvent)="EndPageReplayEventHandler($event)" (exitEvent)="EndPageExitEventHandler($event)"></sb-lib-endpage>

@@ -9,7 +9,7 @@ export class AppComponent implements OnInit {
   title = 'End Page Demo';
   endPageConfig: object;
   contentDetails: object;
-  pdfEndData: object;
+  EndPageData: object;
 
   ngOnInit() {
     this.endPageConfig = {
@@ -24,16 +24,18 @@ export class AppComponent implements OnInit {
 
     this.contentDetails = {
       message: 'You Just Completed',
-      userName: 'Mentor Educator',
+      user: 'Mentor Educator',
       timeLabel: 'TIME',
-      'content-info' : 'B301,B302_STD_1_TAMIL,ENGLISH_LANG_TERM 1_OPT',
+      contentInfo : 'B301,B302_STD_1_TAMIL,ENGLISH_LANG_TERM 1_OPT',
       clockIcon: '/assets/clock.png',
-      author: 'Universsal Learning Aid (Let"s tute)',
+      author: 'Universal Learning Aid (Let"s Learn)',
+      authorLabel: 'Author',
       replayIcon: 'assets/replay.png',
       exitIcon: 'assets/exit.png',
+      replayLabel: 'Replay'
     };
 
-    this.pdfEndData = {
+    this.EndPageData = {
       eventType: 'END',
       metaData: {
         eid: 'END',
@@ -87,5 +89,13 @@ export class AppComponent implements OnInit {
 
   public EndPageEventHandler(valueEmitted) {
     console.log('Telemetry Events:', valueEmitted);
+  }
+
+  public EndPageReplayEventHandler(valueEmitted) {
+    console.log(valueEmitted);
+  }
+
+  public EndPageExitEventHandler(valueEmitted) {
+    console.log(valueEmitted);
   }
 }

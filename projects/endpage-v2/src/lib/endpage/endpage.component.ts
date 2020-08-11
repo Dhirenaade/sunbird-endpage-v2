@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, Input, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
-import { EndPageEvent, ContentDetails, EndPageConfig } from './endPageEvents';
+import { EndPageEvent, ContentDetails, EndPageConfig, EndPageData, EndData } from './endPageEvents';
 
 @Component({
   selector: 'sb-lib-endpage',
@@ -11,7 +11,7 @@ export class EndPageComponent implements OnInit {
    // Import and export for end-page Library
    @Input() endPageConfig: EndPageConfig;
    @Input() contentDetails: ContentDetails;
-   @Input() pdfEndData: object | any;
+   @Input() EndPageData: EndPageData;
    // Output from EndPage
    @Output() sendMetadata: EventEmitter<object> = new EventEmitter<EndPageEvent>();
    @Output() replayEvent: EventEmitter<string> = new EventEmitter<string>();
@@ -19,8 +19,7 @@ export class EndPageComponent implements OnInit {
 
    TotalTimeConsumed = 0;
    TotalTimeConsumedInHours = '';
-   TelemetryEventObject: EndPageEvent;
-   userName: any;
+   TelemetryEventObject = { edata: {} as EndData } as EndPageEvent;
 
   constructor() { }
 
@@ -30,13 +29,17 @@ export class EndPageComponent implements OnInit {
   }
 
   setEndPageEvent( eid: string ) {
+    this.TelemetryEventObject.eid = eid;
+    this.TelemetryEventObject.edata.duration = this.TotalTimeConsumedInHours;
+    this.TelemetryEventObject.edata.pageid = this.EndPageData.metaData.currentPagePointer;
+    this.TelemetryEventObject.edata.totalPages = this.EndPageData.metaData.totalNumberOfPages;
+    this.TelemetryEventObject.edata.summary = this.EndPageData.metaData.pageDuration;
     this.sendMetadata.emit(this.TelemetryEventObject);
   }
 
   getTimeSpent() {
-    console.log(this.pdfEndData);
-    for ( const eachPageTime of this.pdfEndData['metaData']['pageDuration']) {
-      this.TotalTimeConsumed += (eachPageTime.spentTime);
+    for ( const eachPageTime of this.EndPageData.metaData.pageDuration) {
+      this.TotalTimeConsumed += (eachPageTime['spentTime']);
     }
    this.TotalTimeConsumedInHours = this.convertMilisecondToMinutes(this.TotalTimeConsumed);
   }
@@ -53,8 +56,7 @@ export class EndPageComponent implements OnInit {
 
   }
 
-  exit(): void {
-    this.replayEvent.emit('exit');
+  exit(action): void {
+    this.replayEvent.emit(action);
   }
-
 }

@@ -4,25 +4,26 @@ export interface EndPageEvent {
     ver: string;
     mid: string;
     tags: Array<string>;
-    edata: EndData | any;
+    edata: EndData;
 }
 
 export interface EndData {
     type: string;
     mode: string;
-    pageid: string;
-    summary: Array<object>;
-    duration: number;
+    pageid?: number;
+    totalPages?: number;
+    summary?: Array<object>;
+    duration?: string;
 }
 
 export interface EndPageConfig {
     showMessage: boolean;
-      showContentInfo: boolean;
-      showClockIcon: boolean;
-      showAuthor: boolean;
-      showReplay: boolean;
-      showExit: boolean;
-      showUser: boolean;
+    showContentInfo: boolean;
+    showClockIcon: boolean;
+    showAuthor: boolean;
+    showReplay: boolean;
+    showExit: boolean;
+    showUser: boolean;
 }
 
 export interface ContentDetails {
@@ -38,16 +39,10 @@ export interface ContentDetails {
     exitLabel: string;
     user: string;
 }
-
-
-
-
-
-export interface PdfEndData {
-
+export interface EndPageData {
     eventType: string;
       metaData: {
-        eid: PdfEndData
+        eid: string;
         numberOfPagesVisited: number;
         totalNumberOfPages: number;
         currentPagePointer: number;
